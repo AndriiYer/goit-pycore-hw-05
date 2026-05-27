@@ -36,7 +36,19 @@
 Ось псевдокод для функції **caching\_fibonacci**, яка обчислює числа Фібоначчі з використанням кешування:
 
 ```
-ФУНКЦІЯ caching_fibonacci      Створити порожній словник cache      ФУНКЦІЯ fibonacci(n)          Якщо n <= 0, повернути 0          Якщо n == 1, повернути 1          Якщо n у cache, повернути cache[n]          cache[n] = fibonacci(n - 1) + fibonacci(n - 2)          Повернути cache[n]      Повернути функцію fibonacci  КІНЕЦЬ ФУНКЦІЇ caching_fibonacci
+ФУНКЦІЯ caching_fibonacci
+    Створити порожній словник cache
+
+    ФУНКЦІЯ fibonacci(n)
+        Якщо n <= 0, повернути 0
+        Якщо n == 1, повернути 1
+        Якщо n у cache, повернути cache[n]
+
+        cache[n] = fibonacci(n - 1) + fibonacci(n - 2)
+        Повернути cache[n]
+
+    Повернути функцію fibonacci
+КІНЕЦЬ ФУНКЦІЇ caching_fibonacci
 ```
 
 Функція **caching\_fibonacci** створює внутрішню функцію **fibonacci** і словник **cache** для зберігання результатів обчислення чисел Фібоначчі. Кожного разу, коли викликається **fibonacci(n)**, спочатку перевіряється, чи вже збережено значення для **n** у **cache**. Якщо значення є в кеші, воно повертається негайно, що значно зменшує кількість рекурсивних викликів. Якщо значення відсутнє в кеші, воно обчислюється рекурсивно та зберігається в **cache**. Функція **caching\_fibonacci** повертає внутрішню функцію **fibonacci**, яка тепер може бути використана для обчислення чисел Фібоначчі з використанням кешування.
@@ -53,7 +65,12 @@
 **Приклад використання:**
 
 ```
-# Отримуємо функцію fibonacci  fib = caching_fibonacci()  # Використовуємо функцію fibonacci для обчислення чисел Фібоначчі  print(fib(10))  # Виведе 55  print(fib(15))  # Виведе 610
+# Отримуємо функцію fibonacci
+fib = caching_fibonacci()
+
+# Використовуємо функцію fibonacci для обчислення чисел Фібоначчі
+print(fib(10))  # Виведе 55
+print(fib(15))  # Виведе 610
 ```
 
 У цьому прикладі, коли ви викликаєте **fib(10)** або **fib(15)**, функція **fibonacci** всередині **caching\_fibonacci** обчислює відповідні числа Фібоначчі, зберігаючи попередні результати в кеші. Це робить повторні виклики для тих самих значень **n** значно швидшими, оскільки вони просто повертають значення з кешу. Замикання дозволяє **fibonacci(n)** «пам'ятати» стан **cache** між різними викликами, що є ключовим для кешування результатів обчислень.
@@ -108,7 +125,16 @@ text = "Загальний дохід працівника складаєтьс�
 Для виконання завдання візьміть наступний приклад лог-файлу:
 
 ```
-2024-01-22 08:30:01 INFO User logged in successfully.  2024-01-22 08:45:23 DEBUG Attempting to connect to the database.  2024-01-22 09:00:45 ERROR Database connection failed.  2024-01-22 09:15:10 INFO Data export completed.  2024-01-22 10:30:55 WARNING Disk usage above 80%.  2024-01-22 11:05:00 DEBUG Starting data backup process.  2024-01-22 11:30:15 ERROR Backup process failed.  2024-01-22 12:00:00 INFO User logged out.  2024-01-22 12:45:05 DEBUG Checking system health.  2024-01-22 13:30:30 INFO Scheduled maintenance.
+2024-01-22 08:30:01 INFO User logged in successfully.  
+2024-01-22 08:45:23 DEBUG Attempting to connect to the database.  
+2024-01-22 09:00:45 ERROR Database connection failed.  
+2024-01-22 09:15:10 INFO Data export completed.  
+2024-01-22 10:30:55 WARNING Disk usage above 80%.  
+2024-01-22 11:05:00 DEBUG Starting data backup process.  
+2024-01-22 11:30:15 ERROR Backup process failed.  
+2024-01-22 12:00:00 INFO User logged out.  
+2024-01-22 12:45:05 DEBUG Checking system health.  
+2024-01-22 13:30:30 INFO Scheduled maintenance.
 ```
 
 **Вимоги до завдання:**
@@ -173,7 +199,12 @@ python [main.py]() /path/to/logfile.log
 Ми повинні очікувати таке виведення:
 
 ```
-Рівень логування | Кількість  -----------------|----------  INFO             | 4  DEBUG            | 3  ERROR            | 2  WARNING          | 1
+Рівень логування | Кількість  
+-----------------|----------  
+INFO             | 4  
+DEBUG            | 3  
+ERROR            | 2  
+WARNING          | 1
 ```
 
 Якщо користувач хоче переглянути всі записи певного рівня логування, він може запустити скрипт із додатковим аргументом, наприклад:
@@ -185,7 +216,15 @@ python main.py path/to/logfile.log error
 Це виведе загальну статистику за рівнями, а також детальну інформацію для всіх записів із рівнем **ERROR**.
 
 ```
-Рівень логування | Кількість  -----------------|----------  INFO             | 4  DEBUG            | 3  ERROR            | 2  WARNING          | 1  Деталі логів для рівня 'ERROR':  2024-01-22 09:00:45 - Database connection failed.  2024-01-22 11:30:15 - Backup process failed.
+Рівень логування | Кількість  
+-----------------|----------  
+INFO             | 4  
+DEBUG            | 3  
+ERROR            | 2  
+WARNING          | 1  
+Деталі логів для рівня 'ERROR':  
+2024-01-22 09:00:45 - Database connection failed.  
+2024-01-22 11:30:15 - Backup process failed.
 ```
 
 ### Завдання 4
